@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import Pet from "./Pet";
+import useBreedList from "./useBreedList";
+
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
-const breeds = ["Poddle"];
+
 const SearchParams = () => {
   const [location, setLocation] = useState("Seattle, WA");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
   const [pets, setPets] = useState([]);
+  const [breeds] = useBreedList(animal);
 
   //   http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}
 
@@ -60,11 +63,11 @@ const SearchParams = () => {
         </label>
 
         <label htmlFor="breed">
-          Animal
+          Breed
           <select
             id="breed"
             value={breed}
-            disabled={!breeds.length}
+            disabled={breeds.length === 0}
             onChange={(e) => setBreed(e.target.value)}
           >
             <option />
