@@ -1,5 +1,5 @@
 const Details = () => {
-  return "details page";
+  return <h2>Details page</h2>;
 };
 
 export default Details;
