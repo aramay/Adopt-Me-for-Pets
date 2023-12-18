@@ -1,12 +1,16 @@
-import React from "react";
+// import React from "react";
+// import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import Pet from "./Pet";
+import SearchParams from "./SearchParams";
 
 const App = () => {
-  <div id="root">
-    <h1>Adopt Me!</h1>
-    <Pet name="luna" animal="Dog" breed="Havenese" />
-  </div>;
+  return (
+    <div>
+      <h1>Adopt Me!</h1>
+      {console.log("test")}
+      <SearchParams />
+    </div>
+  );
 };
 
 const container = document.getElementById("root");
