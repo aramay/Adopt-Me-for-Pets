@@ -1,19 +1,19 @@
 const Pet = ({ name, animal, breed, images, location, id }) => {
-  //   const petHelper = props.map((item, id) => {
-  //     return (
-  //       <div>
-  //         <h1 key={id}>{item.name}</h1>
-  //         <h2 key={id}>{item.animal}</h2>
-  //         <h2 key={id}>{item.breed}</h2>
-  //       </div>
-  //     );
-  //   });
+  let heroImage = "http://pets-images.dev-apis.com/pets/none.jpg";
+
+  if (images.length) {
+    heroImage = images[0];
+  }
   return (
-    <div key={id}>
-      <h1 key={id}>{name}</h1>
-      <h2 key={id}>{animal}</h2>
-      <h2 key={id}>{breed}</h2>
-    </div>
+    <a href={`/details/${id}`} className="pet">
+      <div className="image-container" key={id}>
+        <img src={heroImage} alt={name} />
+      </div>
+      <div className="info">
+        <h1>{name}</h1>
+        <h2>{`${animal} - ${breed} - ${location}`}</h2>
+      </div>
+    </a>
   );
 };
 export default Pet;

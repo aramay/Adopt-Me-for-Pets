@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import Pet from "./Pet";
 import useBreedList from "./useBreedList";
+import Results from "./Results";
+
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
@@ -27,6 +28,7 @@ const SearchParams = () => {
       const json = await res.json();
       // set Pets
       console.log("Pets found");
+      console.log(json.pets);
       setPets(json.pets);
     } catch (error) {
       console.error("Fetch error ", error.message);
@@ -90,15 +92,7 @@ const SearchParams = () => {
         </label>
         <button type="submit">Submit</button>
       </form>
-
-      {pets.map((pet) => (
-        <Pet
-          name={pet.name}
-          animal={pet.animal}
-          breed={pet.breed}
-          id={pet.id}
-        />
-      ))}
+      <Results pets={pets} />
     </div>
   );
 };
