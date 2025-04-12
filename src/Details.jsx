@@ -19,7 +19,7 @@ const Details = () => {
 
   return (
     <div className="details">
-      <Carousel />
+      <Carousel images={pet.images} />
       <h1>{pet.name}</h1>
       <h2>{`${pet.animal} = ${pet.breed} - ${pet.city}, ${pet.state}`}</h2>
       <button>Adopt {pet.name}</button>
