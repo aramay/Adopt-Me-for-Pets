@@ -1,23 +1,31 @@
 {
   "name": "adopt-me-for-pets",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write \"src/**/*.{js,jsx, ts, tsx}\"",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aramay/Adopt-Me-for-Pets.git"
   },
   "keywords": [],
-  "author": "aramay",
+  "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aramay/Adopt-Me-for-Pets/issues"
+  },
+  "homepage": "https://github.com/aramay/Adopt-Me-for-Pets#readme",
+  "description": "",
   "devDependencies": {
     "@vitejs/plugin-react": "^2.1.0",
-    "eslint": "^8.24.0",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.8",

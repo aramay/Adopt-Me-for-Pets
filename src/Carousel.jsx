@@ -4,12 +4,12 @@ class Carousel extends Component {
   state = {
     active: 0,
   };
+
   static defaultProps = {
     images: ["http://pets-images.dev-apis.com/pets/none.jpg"],
   };
 
   handleIndexClick = (e) => {
-    console.log(this);
     this.setState({
       active: +e.target.dataset.index,
     });
@@ -24,7 +24,6 @@ class Carousel extends Component {
         <img src={images[active]} alt="animal" />
         <div className="carousel-smaller">
           {images.map((photo, index) => (
-            // eslint-disable-next-line
             <img
               key={photo}
               src={photo}
