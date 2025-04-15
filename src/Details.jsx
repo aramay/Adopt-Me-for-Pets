@@ -3,15 +3,17 @@ import { useQuery } from "@tanstack/react-query";
 import fetchPets from "./fetchPets";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
-import { useState, useContext } from "react";
-import Modal from "./Modal";
+import { useState, useContext, lazy } from "react";
 import AdoptedPetContext from "./AdoptedPetContext";
+
+const Modal = lazy(() => import("./Modal"));
 
 const Details = () => {
   const [showModal, setShowModal] = useState(false);
   const { id } = useParams();
   const results = useQuery(["details", id], fetchPets);
   const navigate = useNavigate();
+  // eslint-disable-next-line
   const [_, setAdoptedPet] = useContext(AdoptedPetContext);
 
   if (results.isLoading) {
