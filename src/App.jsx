@@ -1,7 +1,6 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
 import { useState, lazy, Suspense } from "react";
 import AdoptedPetContext from "./AdoptedPetContext";
 
@@ -21,16 +20,16 @@ const App = () => {
   const adoptedPet = useState(null);
 
   return (
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <Suspense
-          fallback={
-            <div className="loading-pane">
-              <h2 className="loader">⚙️</h2>
-            </div>
-          }
-        >
-          <AdoptedPetContext.Provider value={adoptedPet}>
+    <div>
+      <AdoptedPetContext.Provider value={adoptedPet}>
+        <QueryClientProvider client={queryClient}>
+          <Suspense
+            fallback={
+              <div className="loading-pane">
+                <h2 className="loader">⚙️</h2>
+              </div>
+            }
+          >
             <header>
               <Link to="/">Adopt Me!</Link>
             </header>
@@ -39,13 +38,11 @@ const App = () => {
               <Route path="/details/:id" element={<Details />} />
               <Route path="/" element={<SearchParams />} />
             </Routes>
-          </AdoptedPetContext.Provider>
-        </Suspense>
-      </QueryClientProvider>
-    </BrowserRouter>
+          </Suspense>
+        </QueryClientProvider>
+      </AdoptedPetContext.Provider>
+    </div>
   );
 };
 
-const container = document.getElementById("root");
-const root = createRoot(container);
-root.render(<App />);
+export default App;
