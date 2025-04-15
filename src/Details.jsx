@@ -13,6 +13,7 @@ const Details = () => {
   const { id } = useParams();
   const results = useQuery(["details", id], fetchPets);
   const navigate = useNavigate();
+  // eslint-disable-next-line
   const [_, setAdoptedPet] = useContext(AdoptedPetContext);
 
   if (results.isLoading) {
