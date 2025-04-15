@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useDeferredValue, useMemo } from "react";
 import useBreedList from "./useBreedList";
 import Results from "./Results";
 import { useQuery } from "@tanstack/react-query";
@@ -17,9 +17,15 @@ const SearchParams = () => {
   const results = useQuery(["search", requestParams], fetchSearch);
   const pets = results?.data?.pets ?? [];
 
-  const [breed, setBreed] = useState("");
+  const deferredPets = useDeferredValue(pets);
+  const renderedPets = useMemo(
+    () => <Results pets={deferredPets} />,
+    [deferredPets]
+  );
+  // const [breed, setBreed] = useState("");
   const [animal, setAnimal] = useState("");
   const [breeds] = useBreedList(animal);
+  //
   const [adoptedPet, _] = useContext(AdoptedPetContext);
 
   function handleSubmit(e) {
@@ -87,7 +93,7 @@ const SearchParams = () => {
         </label>
         <button type="submit">Submit</button>
       </form>
-      <Results pets={pets} />
+      {renderedPets}
     </div>
   );
 };
